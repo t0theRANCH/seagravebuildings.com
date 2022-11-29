@@ -1,0 +1,100 @@
+@font-face {
+    font-family: 'BankGothicBold';
+    font-style: normal;
+    font-weight: bold;
+    src: url('BankGothicBold.ttf');
+}
+
+h2 strong{
+  font-size: 32px;
+  color: red;
+  font-family: BankGothicBold;
+}
+
+h3 strong {
+  font-size: 24px;
+  color: white;
+  font-family: BankGothicBold;
+}
+
+.mdc-deprecated-list-item__text {
+  font-family: BankGothicBold;
+  font-size: large;
+}
+
+.expansion-panel-toggler{
+  font-family: BankGothicBold;
+  font-size: large;
+}
+
+.expansion-panel-body .mdc-deprecated-list-item .mdc-deprecated-list-item__text{
+  font-size: medium;
+}
+
+li {
+  color: white;
+}
+
+p {
+  font-size: 10px;
+  color: white;
+}
+
+.home {
+  background: black;
+  display: flex;
+}
+
+.mdc-drawer{
+  padding: 90px 0 0;
+  background: black;
+  z-index: 1;
+  width: 20%;
+}
+
+.topbar {
+  background-color: black;
+  position: fixed;
+  top: 0;
+  left: 20%;
+  width: 80%;
+  overflow: hidden;
+  z-index: 3;
+  display: block;
+  object-fit: cover;
+}
+
+.topbar img {
+  background-color: black;
+  position: fixed;
+  top: 0;
+  left: 20%;
+  width: 80%;
+  overflow: hidden;
+  z-index: 3;
+  display: block;
+  object-fit: cover;
+}
+
+.overlay {
+  background-color: black;
+  width: 80%;
+  top: 0;
+  left: 20%;
+  overflow: hidden;
+  text-align: center;
+  z-index: 1;
+  display: block;
+}
+
+
+.content-wrapper {
+  overflow: hidden;
+  z-index: 2;
+  display: block;
+}
+
+.content {
+  margin-left: 20px;
+  overflow: hidden;
+}

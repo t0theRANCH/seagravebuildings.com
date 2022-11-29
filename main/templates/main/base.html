@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+
+    <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="{% static 'base.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Add Material font (Roboto) and Material icon as needed -->
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;700&family=Roboto+Slab:wght@300;400;700&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Outlined" rel="stylesheet" crossorigin>
+
+    <!-- Material CSS -->
+    <link href="https://cdn.jsdelivr.net/gh/djibe/material@4.6.2-1.0/css/material.min.css" rel="stylesheet" crossorigin>
+
+    <!-- Optional Material CSS for Plugins
+    <link href="https://cdn.jsdelivr.net/gh/djibe/material@4.6.2-1.0/css/material-plugins.min.css" rel="stylesheet" crossorigin>
+    -->
+    <script>let bannerHeight = {{ banner_height }};</script>
+
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body class="home">
+    <aside class="mdc-drawer">
+      <div class="mdc-drawer__content">
+        <nav class="mdc-deprecated-list">
+        {% for item in menu_items %}
+            {% if not item.is_dropdown and not item.dropdown%}
+                <!-- Normal Menu Item-->
+                <a class="mdc-deprecated-list-item" href="{{ item.url }}" style="color: white">
+                    <span class="mdc-deprecated-list-item__ripple"></span>
+                    <span class="mdc-deprecated-list-item__text">{{ item.text }}</span>
+                </a>
+            {% elif item.is_dropdown %}
+                <!-- Expansion Panel-->
+              <div class="list-group" id="accordion{{item.id}}" style="padding-top: 0; border-width: 0; background: black">
+              <div class="expansion-panel list-group-item">
+                <span class="mdc-deprecated-list-item__ripple"></span>
+                <a aria-controls="collapse{{ item.id }}" aria-expanded="false" class="expansion-panel-toggler collapsed" data-toggle="collapse" href="#collapse{{ item.id }}" id="heading{{ item.id }}" style="color: white">
+                  {{ item.text }}
+                  <div class="expansion-panel-icon ml-3 text-black-secondary">
+                    <i class="collapsed-show material-icons" style="color: white">keyboard_arrow_down</i>
+                    <i class="collapsed-hide material-icons" style="color: white">keyboard_arrow_up</i>
+                  </div>
+                </a>
+                <div aria-labelledby="heading{{ item.id }}" class="collapse" data-parent="#accordion{{ item.id }}" id="collapse{{ item.id }}">
+                  <div class="expansion-panel-body">
+                        {% for sub_item in menu_items %}
+                            {% if sub_item.dropdown == item.text %}
+                                <!-- Single Page -->
+
+                                    <a class="mdc-deprecated-list-item" href="{{ sub_item.url }}" style="color: white">
+                                        <span class="mdc-deprecated-list-item__ripple"></span>
+                                        <span class="mdc-deprecated-list-item__text">{{ sub_item.text }}</span>
+                                    </a>
+
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {% endif %}
+        {% endfor %}
+            <!-- Current Page
+          <a class="mdc-deprecated-list-item mdc-deprecated-list-item--activated" href="#" aria-current="page">
+            <span class="mdc-deprecated-list-item__ripple"></span>
+            <span class="mdc-deprecated-list-item__text">Title</span>
+          </a>
+          -->
+        </nav>
+      </div>
+    </aside>
+    <div class="content-wrapper">
+        <img class="overlay" src="{% static 'resized_logo.jpg' %}" style="height: {{ banner_height }}px">
+        <div class="topbar" style="height: {{ top_bar_height }}">
+            <img src="{% static top_bar %}" style="height: {{ top_bar_height }}">
+        </div>
+        <div class="content" style="margin-top: {{ content_margin }} ">
+           {% block content %}
+            {% endblock %}
+        </div>
+    </div>
+
+    <!-- jQuery, Bootstrap Bundle (includes Popper) and Material -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha256-GRJrh0oydT1CwS36bBeJK/2TggpaUQC6GzTaTQdZm0k=" crossorigin></script>
+    <script src="https://cdn.jsdelivr.net/gh/djibe/material@4.6.2-1.0/js/material.min.js" crossorigin></script>
+
+    <!--Local js files-->
+    <script type="text/javascript" src="{% static 'top_bar.js' %}"></script>
+</body>
+</html>
