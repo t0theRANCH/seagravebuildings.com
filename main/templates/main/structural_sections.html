@@ -1,1 +1,45 @@
 {% extends 'main/products.html' %}
+{% load static %}
+{% block title %}Structural Sections{% endblock %}
+
+{% block content %}
+<h1><strong>Structural Sections</strong></h1>
+<div class="container" style="display: block">
+    <div style="display: flex">
+        <div style="display: block; width: 45%; margin-right: 20px">
+            <p>
+                Seagrave roll forms a wide range of cee and zee sections for use in light framing applications or to replace
+                hot rolled sections. Sizes range from 4 1/2 to 16 inches wide with leg lengths from 2 to 3 1/2 inches with
+                an infinite choice of sizes in between and in gauge that range from 16 gauge to 3/16 inches thick.
+            </p>
+            <p>
+                Roll forming is done on a Metform roll former that is unique in Canada. Instead of the normal 4 to 5 hour
+                changeover required by traditional roll forming equipment, Seagrave can change from cees to zees or various
+                widths or leg lengths in 5 to 10 minutes. Therefore, it is possible to make small runs of a few hundred feet
+                without expensive setup times.
+            </p>
+            <p>
+                A wide range of inline hole patterns allow the creation of a section to your specifications, cut to your
+                required length with holes and no waste.
+            </p>
+        </div>
+        <div style="width: 45%">
+            <img src="{% static 'pictures/structual-sections.bmp' %}" style="max-width: 100%">
+        </div>
+    </div>
+    <div>
+        <h3><strong>Material Designations</strong></h3>
+        <p>
+            Any material, including hot rolled, P&O, galvanized, pre-painted steel or aluminum, with a yield of 30,000
+            to 70,000 PSI can be used, but the most typical is hot rolled steel with a 50-55 yield. Special material are
+            subject to availability.
+        </p>
+        <h3><strong>Painting</strong></h3>
+        <p>
+            An optional coat of light grey hybrid powder paint (epoxy/polyester) can be applied with an inline powder
+            paint system. Maximum length of part is 42 feet when powder paint is used. Other types of powders and
+            colours are available and may be subject to minimum order sizes.
+        </p>
+    </div>
+</div>
+{% endblock %}

@@ -7,9 +7,7 @@ let lastContentScrollTop = 0;
 
 function scrollListener(){
   const currentContentScrollTop = wrapperElement.scrollTop;
-
   currentAppBarHeight = parseInt(appBarElement.style.height);
-
   if (currentContentScrollTop > lastContentScrollTop) {
     let newAppBarHeight;
     // user is scrolling down
@@ -19,12 +17,10 @@ function scrollListener(){
         currentAppBarHeight -
         (currentContentScrollTop - lastContentScrollTop);
       // set position limit
-      console.log(newAppBarHeight)
       newAppBarHeight =
         newAppBarHeight > bannerHeight
           ? newAppBarHeight
           : bannerHeight;
-      console.log(newAppBarHeight)
       appBarElement.style.height = newAppBarHeight + 'px';
       appBarElement.style.opacity = (newAppBarHeight / (appBarHeight - bannerHeight)) * 100 + '%';
 
@@ -33,15 +29,19 @@ function scrollListener(){
     // user is scrolling up
     if (currentAppBarHeight < appBarHeight) {
       // appbar is not entirely displayed
-      let newAppBarHeight =
-        currentAppBarHeight +
-        (lastContentScrollTop - currentContentScrollTop);
-      // set position limit
-      newAppBarHeight =
-        newAppBarHeight > appBarHeight ? appBarHeight : newAppBarHeight;
+      let newAppBarHeight;
 
-      appBarElement.style.height = newAppBarHeight + 'px';
-      appBarElement.style.opacity = (newAppBarHeight / (appBarHeight - bannerHeight)) * 100 + '%';
+      if ((appBarHeight - bannerHeight)  > currentContentScrollTop) {
+        newAppBarHeight =
+            currentAppBarHeight +
+            (lastContentScrollTop - currentContentScrollTop);
+        // set position limit
+        newAppBarHeight =
+            newAppBarHeight > appBarHeight ? appBarHeight : newAppBarHeight;
+
+        appBarElement.style.height = newAppBarHeight + 'px';
+        appBarElement.style.opacity = (newAppBarHeight / (appBarHeight - bannerHeight)) * 100 + '%';
+      }
     }
   }
 

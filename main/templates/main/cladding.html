@@ -1,1 +1,34 @@
 {% extends 'main/products.html' %}
+{% load static %}
+{% block css %}<link rel="stylesheet" href="{% static 'products.css' %}">{% endblock %}
+
+{% block title %}Cladding{% endblock %}
+
+{% block content %}
+<h1><strong>Cladding</strong></h1>
+
+<h2><strong>Panel Design Options</strong></h2>
+<p>
+Seagrave supplies a wide selection of high quality roof, wall and liner profiles. Our comprehensive selection of
+steel panels is ideal for use with new buildings or retrofit projects using any type of construction.
+</p>
+
+<img class="cladding-profiles" src="{% static 'pictures/cladding-profiles.jpg' %}">
+
+<h2><strong>Stock Materials and Colours</strong></h2>
+<p>
+Please <a href="contact.html">contact</a> us for current material and colour availability.
+Many standard and optional colours are available upon request.
+</p>
+
+<img class="colours" src="{% static 'pictures/colours.jpg' %}">
+
+<h2><strong>Trims</strong></h2>
+<p>
+Seagrave offers a wide range of standard trims to compliment our panels.
+Custom trims are easily designed and made to order.
+</p>
+
+<img class="trim-info" src="{% static 'pictures/trim-info.jpg' %}">
+
+{% endblock %}

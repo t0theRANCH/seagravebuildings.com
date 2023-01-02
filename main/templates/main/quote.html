@@ -1,0 +1,197 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% load custom_templates %}
+
+{% block title %}Get a Free Quote{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'stylesheets/form_fields.css' %}">
+<style>
+
+textarea {
+    height: 92px !important;
+    padding-top: 10px !important;
+}
+
+input.error.text-input ~ .helper-text::after {
+    content: 'Please fill out this field';
+}
+
+input.error.number-input ~ .helper-text::after {
+    content: 'Please enter a number'
+}
+
+select.error.select-input ~ .helper-text::after {
+    content: 'Please make a selection'
+}
+
+</style>
+{% endblock %}
+
+{% block content %}
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <form method="post" action="#">
+    {% csrf_token %}
+        <div class="form-container" style="display: block">
+            <h3><strong>Contact Information</strong></h3>
+            <div role="separator" class="mdc-deprecated-list-divider" style="background: var(--md-sys-color-on-background-dark)"></div>
+            <p>&nbsp;</p>
+            {% for item in form_sections.contact_info %}
+            <div class="form-row">
+                {{ item }}
+                <label for="{{ item.id_for_label }}" class="form__label">{{ item.label }}</label>
+                <div class="helper-text">
+                    {{ item.errors.0 }}
+                </div>
+            </div>
+            {% endfor %}
+
+            <p>&nbsp;</p>
+            <div role="separator" class="mdc-deprecated-list-divider" style="background: var(--md-sys-color-on-background-dark)"></div>
+            <h3><strong>Property Information</strong></h3>
+            <div role="separator" class="mdc-deprecated-list-divider" style="background: var(--md-sys-color-on-background-dark)"></div>
+            <p>&nbsp;</p>
+            {% for item in form_sections.property_info %}
+            <div class="form-row">
+                <div class="select">
+                    {{ item }}
+                    <label class="select-label" id="label-{{ item.id_for_label }}" for="{{ item.id_for_label }}">{{ item.label }}</label>
+                    <div class="helper-text">
+                        {{ item.errors.0 }}
+                    </div>
+                </div>
+
+            </div>
+            {% endfor %}
+
+            <p>&nbsp;</p>
+            <div role="separator" class="mdc-deprecated-list-divider" style="background: var(--md-sys-color-on-background-dark)"></div>
+            <h3><strong>Building Dimensions</strong></h3>
+            <div role="separator" class="mdc-deprecated-list-divider" style="background: var(--md-sys-color-on-background-dark)"></div>
+            <p>&nbsp;</p>
+
+            {% for item in form_sections.basic_info %}
+            <div class="form-row">
+                {{ item }}
+                <label for="{{ item.id_for_label }}" class="form__label">{{ item.label }}</label>
+                <div class="helper-text">
+                    {{ item.errors.0 }}
+                </div>
+            </div>
+            {% endfor %}
+            <p>&nbsp;</p>
+            <div role="separator" class="mdc-deprecated-list-divider" style="background: var(--md-sys-color-on-background-dark)"></div>
+            <h3><strong>Building Style</strong></h3>
+            <div role="separator" class="mdc-deprecated-list-divider" style="background: var(--md-sys-color-on-background-dark)"></div>
+            <p>&nbsp;</p>
+
+            {% for item in form_sections.basic_info_choices %}
+            <div class="form-row">
+                <div class="select">
+                    {{ item }}
+                    <label class="select-label" id="label-{{ item.id_for_label }}" for="{{ item.id_for_label }}">{{ item.label }}</label>
+                    <div class="helper-text">
+                        {{ item.errors.0 }}
+                    </div>
+                </div>
+
+            </div>
+            {% endfor %}
+
+            <p>&nbsp;</p>
+            <div role="separator" class="mdc-deprecated-list-divider" style="background: var(--md-sys-color-on-background-dark)"></div>
+            <h3><strong>Insulation</strong></h3>
+            <div role="separator" class="mdc-deprecated-list-divider" style="background: var(--md-sys-color-on-background-dark)"></div>
+            <p>&nbsp;</p>
+
+            {% for item in form_sections.insulation %}
+            <div class="form-row">
+                <div class="select">
+                    {{ item }}
+                    <label class="select-label" id="label-{{ item.id_for_label }}" for="{{ item.id_for_label }}">{{ item.label }}</label>
+                    <div class="helper-text">
+                        {{ item.errors.0 }}
+                    </div>
+                </div>
+
+            </div>
+            {% endfor %}
+
+            <p>&nbsp;</p>
+            <div role="separator" class="mdc-deprecated-list-divider" style="background: var(--md-sys-color-on-background-dark)"></div>
+            <h3><strong>Trim</strong></h3>
+            <div role="separator" class="mdc-deprecated-list-divider" style="background: var(--md-sys-color-on-background-dark)"></div>
+            <p>&nbsp;</p>
+
+            {% for item in form_sections.trim %}
+            <div class="form-row">
+                <div class="select">
+                    {{ item }}
+                    <label class="select-label" id="label-{{ item.id_for_label }}" for="{{ item.id_for_label }}">{{ item.label }}</label>
+                    <div class="helper-text">
+                        {{ item.errors.0 }}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+            <p>&nbsp;</p>
+            <div role="separator" class="mdc-deprecated-list-divider" style="background: var(--md-sys-color-on-background-dark)"></div>
+            <h3><strong>Doors</strong></h3>
+            <div role="separator" class="mdc-deprecated-list-divider" style="background: var(--md-sys-color-on-background-dark)"></div>
+            <p>&nbsp;</p>
+
+            {% for item in form_sections.door_info %}
+            <div class="form-row">
+                {{ item }}
+                <label for="{{ item.id_for_label }}" class="form__label">{{ item.label }}</label>
+                <div class="helper-text">
+                    {{ item.errors.0 }}
+                </div>
+            </div>
+            {% endfor %}
+
+            <div class="checkbox-wrapper" style="display: block; margin-bottom: 20px">
+                <div class="form-row">
+                    <p>Overhead Door Location</p>
+                </div>
+                  {% for item in form_sections.door_location %}
+                  <div class="form-checkbox-row" style="display: flex">
+                      <div class="mdc-form-field">
+                          <div class="mdc-checkbox">
+                              {{ item }}
+                              <div class="mdc-checkbox__background"
+                                   style="background-color: var(--md-sys-color-on-surface-variant-dark);
+                                   border-color: var(--md-sys-color-primary-container-dark)">
+                                  <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+                                      <path class="mdc-checkbox__checkmark-path" fill="none"
+                                            d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
+                                  </svg>
+                                  <div class="mdc-checkbox__mixedmark"></div>
+                              </div>
+                              <div class="mdc-checkbox__ripple"></div>
+                              <div class="mdc-checkbox__focus-ring"></div>
+                          </div>
+                          <label class="checkbox-label" for="{{ item.id_for_label }}">{{ item.label }}</label>
+                      </div>
+                  </div>
+                  {% endfor %}
+            </div>
+            <p>&nbsp;</p>
+            <div role="separator" class="mdc-deprecated-list-divider" style="background: var(--md-sys-color-on-background-dark)"></div>
+            <p>&nbsp;</p>
+            <div class="form-row">
+                {{ form.additional }}
+                <label for="{{ form.additional.id_for_label }}" class="form__label">{{ form.additional.label }}</label>
+            </div>
+
+        </div>
+        <button class="mdc-fab mdc-fab--extended" id="submit-button" type="submit">
+          <div class="mdc-fab__ripple"></div>
+          <span class="material-icons mdc-fab__icon">send</span>
+          <span class="mdc-fab__label">Request Quote</span>
+        </button>
+    </form>
+{% endblock %}

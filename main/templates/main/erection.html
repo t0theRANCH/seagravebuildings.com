@@ -1,1 +1,83 @@
 {% extends 'main/base.html' %}
+{% load static %}
+{% block css %}
+    <style>
+    img {
+        max-width: 95%;
+    }
+    figure {
+        width: 33%;
+    }
+    figcaption {
+        color: var(--md-sys-color-on-background-dark);
+        text-align: center;
+        word-wrap: normal;
+    }
+    .gallery-row{
+        display: flex;
+    }
+    </style>
+{% endblock %}
+{% block title %}Erection{% endblock %}
+
+{% block content %}
+    <div class="gallery" style="display: block">
+        <div class="gallery-row">
+            <figure>
+                <img src="{% static 'pictures/erection1.png' %}">
+                <figcaption>Steel building basic parts</figcaption>
+            </figure>
+            <figure>
+                <img src="{% static 'pictures/erection2.png' %}">
+                <figcaption>Attach girts between tapered columns and end posts</figcaption>
+            </figure>
+            <figure>
+                <img src="{% static 'pictures/erection3.png' %}">
+                <figcaption>Attach interior bay’s rafters</figcaption>
+            </figure>
+        </div>
+        <div class="gallery-row">
+            <figure>
+                <img src="{% static 'pictures/erection4.png' %}">
+                <figcaption>Attach purlins to rafters</figcaption>
+            </figure>
+            <figure>
+                <img src="{% static 'pictures/erection5.png' %}">
+                <figcaption>View of end and interior bays assemble</figcaption>
+            </figure>
+            <figure>
+                <img src="{% static 'pictures/erection6.png' %}">
+                <figcaption>View of steel building skeleton assembled</figcaption>
+            </figure>
+        </div>
+        <div class="gallery-row">
+            <figure>
+                <img src="{% static 'pictures/erection7.png' %}">
+                <figcaption>Sidewall Sheeting</figcaption>
+            </figure>
+            <figure>
+                <img src="{% static 'pictures/erection8.png' %}">
+                <figcaption>Roof Sheeting</figcaption>
+            </figure>
+            <figure>
+                <img src="{% static 'pictures/erection9.png' %}">
+                <figcaption>End walls placement</figcaption>
+            </figure>
+        </div>
+        <div class="gallery-row">
+            <figure>
+                <img src="{% static 'pictures/erection10.png' %}">
+                <figcaption>Completely assembled building</figcaption>
+            </figure>
+            <figure>
+                <img src="{% static 'pictures/erection11.png' %}">
+                <figcaption>Sidewall Insulation</figcaption>
+            </figure>
+            <figure>
+                <img src="{% static 'pictures/erection12.png' %}">
+                <figcaption>Roof Sheeting Insulation</figcaption>
+            </figure>
+        </div>
+
+    </div>
+{% endblock %}

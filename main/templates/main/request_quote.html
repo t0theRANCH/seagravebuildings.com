@@ -1,0 +1,21 @@
+{% extends 'main/confirmation_template.html' %}
+
+{% block title %}Quote Request Sent{% endblock %}
+
+{% block content %}
+<div class="text" style="text-align: center">
+    <h1><strong>Thank You {{ name }}</strong></h1>
+    <h3><strong>Your Request For a Quote Has Been Sent!</strong></h3>
+    <h3><strong>We'll call you at {{ phone }} as soon as we look over your submission</strong></h3>
+</div>
+<div class="button" style="text-align: center">
+    <form action="{% url 'home' %}">
+        <button class="mdc-button mdc-button--raised mdc-button--icon-leading" style="background: var(--md-sys-color-primary-dark)">
+          <span class="mdc-button__ripple"></span>
+          <span class="mdc-button__focus-ring"></span>
+          <i class="material-icons mdc-button__icon" style="color: var(--md-sys-color-on-primary-dark)" aria-hidden="true">home</i>
+          <span class="mdc-button__label" style="color: var(--md-sys-color-on-primary-dark)">Return to Home Page</span>
+        </button>
+    </form>
+</div>
+{% endblock %}

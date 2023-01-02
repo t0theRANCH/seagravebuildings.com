@@ -15,6 +15,8 @@ class TransformImage:
         self.image_out = None
         self.image_out_path = ''
 
+        self.surface_colour_hex = '#1a1c1e'
+        self.surface_colour = self.get_colour_hex(self.surface_colour_hex)
         self.target_resolution = (0, 0)
         self.logo_banner_resolution = (0, 0)
         self.new_image_width = 0
@@ -63,11 +65,16 @@ class TransformImage:
     def rotate_180(image):
         return np.rot90(image, 2)
 
+    @staticmethod
+    def get_colour_hex(hex_value):
+        colour_hex = hex_value.lstrip('#')
+        return tuple(int(colour_hex[i:i + 2], 16) for i in (0, 2, 4))
+
     def resize_top_image(self, image):
-        blank_image = Image.new('RGB', (int(self.new_image_width), self.logo_banner_resolution[1]))
-        new_image = Image.new('RGB', (int(self.new_image_width), self.logo_banner_resolution[1]))
+        blank_image = Image.new('RGB', (int(self.new_image_width), self.logo_banner_resolution[1]), self.surface_colour)
+        new_image = Image.new('RGB', (int(self.new_image_width), self.logo_banner_resolution[1]), self.surface_colour)
         center_x = (self.new_image_width / 2) - (self.logo_banner_resolution[0] / 2)
-        new_image.paste(image.convert('RGB'), (int(center_x), 0))
+        new_image.paste(image, (int(center_x), 0), image)
         new_image.save('main/static/resized_logo.jpg')
         return blank_image
 
@@ -79,11 +86,11 @@ class TransformImage:
         new_image.save("main/static/top_bar_image.jpg")
 
     def make_top_bar(self):
-        image_top = self.resize_top_image(Image.open("main/static/logo-white-black-background.jpg"))
+        image_top = self.resize_top_image(Image.open("main/static/logo-white.png"))
         image_bottom = Image.open(self.image_out_path)
-        self.logo_banner_resolution = (image_top.size[0], image_top.size[1])
-        total_height = image_bottom.size[1] + image_top.size[1]
-        new_image = Image.new('RGB', (int(self.new_image_width), total_height), (250, 250, 250))
+        #self.logo_banner_resolution = (image_top.size[0], image_top.size[1])
+        total_height = image_bottom.size[1] + self.logo_banner_resolution[1] #image_top.size[1]
+        new_image = Image.new('RGB', (int(self.new_image_width), total_height), self.surface_colour)
         new_image.paste(image_top, (0, 0))
         new_image.paste(image_bottom, (0, image_top.size[1]))
         new_image.save("main/static/top_bar_image.jpg")

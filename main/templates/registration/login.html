@@ -1,0 +1,35 @@
+{% extends 'registration/login_template.html' %}
+
+{% block title %}Please Log In{% endblock %}
+
+{% block heading %}Log In{% endblock %}
+
+{% block content %}
+    {% for field in form %}
+    <div class="form-row">
+        {{ field }}
+        <label for="{{ field.id_for_label }}" class="form__label">
+            {{ field.label }}
+        </label>
+        <div class="helper-text">
+            {{ field.errors.0 }}
+        </div>
+    </div>
+    {% endfor %}
+    <a href="/forgot-password" style="padding-left: 55%">Forgot Password</a>
+    <div class="form-row">
+        <button class="mdc-button mdc-button--raised" id="submit-button">
+            <span class="mdc-button__ripple"></span>
+            <span class="mdc-button__focus-ring"></span>
+            <span class="mdc-button__label" style="color: var(--md-sys-color-on-primary-dark)">Sign In</span>
+        </button>
+    </div>
+{% endblock %}
+
+{% block bottom_content %}
+<div class="bottom-actions" style="text-align: center">
+    <p>
+        Don't have an account? <a href="{% url 'sign-up' %}">Sign Up</a>
+    </p>
+</div>
+{% endblock %}

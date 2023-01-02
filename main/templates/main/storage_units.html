@@ -1,1 +1,78 @@
 {% extends 'main/building_structures.html' %}
+{% load static %}
+{% block title %}Storage Units{% endblock %}
+
+{% block content %}
+<h1><strong>Storage Units</strong></h1>
+<div class="container" style="display: block">
+    <div class="top-container" style="display: flex">
+        <div class="text" style="display: block; width: 20%">
+            <p>
+                Seagrave Building Systems has the knowledge and experience to provide the best custom solution for your Mini
+                and Self Storage needs. Seagrave has a building system to suit your next project.
+            </p>
+            <p>
+                Made from the most durable materials available, StormSeal, StrucSeal and DiamondSeal panels offer the
+                advantage of being extremely strong, yet are lightweight. Seagrave offers economical choices for wall, roof
+                and liner systems.
+            </p>
+            <p>
+                Seagrave buildings are available in a number of standard colours. Please refer to the Seagrave Cladding
+                Colour Availability Chart. Optional colours and coatings are available by special order.
+            </p>
+        </div>
+        <div class="image" style="width: 40%; margin: auto">
+            <img src="{% static 'pictures/Storage1.jpg' %}" style="max-width: 100%">
+        </div>
+        <div class="image" style="display: block; width: 25%; margin: auto">
+            <img src="{% static 'pictures/Storage2.jpg' %}" style="max-width: 100%; margin-bottom: 20px">
+            <img src="{% static 'pictures/stock-colours.jpg' %}" style="max-width: 100%; width: 100%">
+        </div>
+    </div>
+    <div class="middle-container" style="display: block">
+        <h3><strong>The Strength of Seagrave</strong></h3>
+        <p>
+            Seagrave, Canada’s leading supplier of steel building components, supplies a complete line of MiniStorage
+            buildings for the self storage industry. With a focus on quality and value, the design details used in a
+            Seagrave MiniStorage building ensure ease of erection by factory locating critical fastening locations and
+            by providing pre-cut framing members. From the fasteners to the doors, Seagrave can provide the complete
+            building for your self storage needs.
+        </p>
+    </div>
+    <div class="bottom-container" style="display: flex">
+        <div class="text" style="display: block; width: 48%; margin-right: 20px">
+            <h3><strong>Long Lasting. Solid. Attractive.</strong></h3>
+            <p>
+                Seagrave MiniStorage units are made completely of long-lasting steel to ensure your investment is
+                secure. Interior walls are finished using Seagrave DiamondSeal, a low rib wall panel while the exterior
+                wall and roof cladding can be either StormSeal or StrucSeal.
+            </p>
+            <h3><strong>Quality and Economy are Built In</strong></h3>
+            <p>
+                Every MiniStorage project is designed and detailed for your specific application using advanced 3D
+                modeling software. This technique ensures accuracy by designing the building in a virtual environment.
+                Factory placed holes greatly reduce erection time by eliminating field measuring of critical dimensions.
+                This means our MiniStorage building is a bolt together solution using special self-threading structural
+                bolts that provide exceptionally strong connections that are simple and efficient to complete.
+            </p>
+            <p>
+                Each MiniStorage building comes with easy to read engineer stamped drawings, erection manual, structural
+                steel door openings, partition framing, roof and wall panels and a complete trim package.
+            </p>
+            <h3><strong>Options</strong></h3>
+            <p>
+                Optional items include doors, gutters and downspouts, ridge vents, and the Seagrave RTL-24 standing seam
+                roof system. Protect your investment with the premium RTL-24 concealed fastener standing seam roof
+                system. Exterior roofing, siding, and trims come in a variety of stock colours. Optional colours are
+                available by special order. Special requirements can be incorporated such as interior hallways,
+                firewalls, provisions for climate control, and various shaped building footprints. Seagrave has the
+                solution for your mini storage needs.
+            </p>
+            <img src="{% static 'pictures/Storage5.jpg' %}" style="max-width: 100%; margin: auto">
+        </div>
+        <div class="image" style="width: 48%">
+            <img src="{% static '/pictures/Storage4.jpg' %}" style="max-width: 100%">
+        </div>
+    </div>
+</div>
+{% endblock %}

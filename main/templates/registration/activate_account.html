@@ -1,0 +1,10 @@
+{% extends 'main/confirmation_template.html' %}
+
+{% block title %}Account Activated{% endblock %}
+
+{% block content %}
+<div class="text" style="text-align: center">
+    <h3><strong>Account Activated</strong></h3>
+    <p>Thank you for your email confirmation. Now you can <a href="{% url 'login' %}">login</a> your account.</p>
+</div>
+{% endblock %}

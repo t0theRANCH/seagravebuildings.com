@@ -1,1 +1,85 @@
 {% extends 'main/building_structures.html' %}
+{% load static %}
+
+{% block title %}Heritage Buildings{% endblock %}
+
+{% block content %}
+<div class="container" style="display: flex">
+    <div class="text" style="display: block">
+        <h1><strong>Heritage Buildings</strong></h1>
+        <p>
+            Stand the test of time with a Seagrave Heritage Building. Our cold-formed, bolt-together system is an economical
+            alternative to a wood framed structure, but with the strength of steel.
+        </p>
+        <h3><strong>Strength of Seagrave</strong></h3>
+        <p>
+            Seagrave, a leading Canadian supplier of steel building components, designs a “do-it-yourself” bolt-together
+            building system for everyday use. With a focus on quality and value, the design details used in a Seagrave Heritage
+            Building ensure ease of erection by factory locating critical fastening locations and by providing pre-cut framing
+            members. Seagrave can provide a complete building system for your farm, workshop or small storage needs.
+        </p>
+        <p>
+            For a high quality, easy to assemble Seagrave Heritage Building, <a href="contact.html">contact us</a>
+            today and get the Strength of Seagrave on your next project.
+        </p>
+
+        <h1><strong>Solid. Highly Functional. Attractive</strong></h1>
+        <div role="separator" class="mdc-deprecated-list-divider" style="background: var(--md-sys-color-on-background-dark)"></div>
+        <p>&nbsp;</p>
+        <p>
+            Seagrave Heritage Buildings are made completely of long-lasting steel to ensure your investment is secure.
+            With a low cost per square foot, a Seagrave Heritage Building is comparable in price to a wood structure but
+            with unparalleled quality.
+        </p>
+        <img src="{% static 'pictures/stock-colours.jpg' %}" style="float: left">
+        <p style="text-align: justify">
+            Steel is one of the strongest building materials available and as a manufactured commodity, the quality is
+            assured. Steel won’t rot, warp or twist and is free from knots and splits. You will never worry about your
+            steel structure having a sagging roofline or walls that are out of plumb. The structure of a Seagrave
+            Heritage Building maximizes the usable interior volume of your building. This allows for larger door
+            openings in the end walls and creates unlimited functionality. The Heritage Building roof and wall systems
+            are available in a variety of standard colors and can be used alone or combined with traditional
+            construction materials to achieve an aesthetically pleasing building.
+        </p>
+        <h1><strong>Assemble With Ease</strong></h1>
+        <div role="separator" class="mdc-deprecated-list-divider" style="background: var(--md-sys-color-on-background-dark)"></div>
+        <p>&nbsp;</p>
+        <p>
+            Every Seagrave Heritage Building is designed and detailed for your specific application using advanced 3D
+            modeling software. This technique ensures accuracy by designing the building in a virtual environment.
+            Factory placed holes greatly reduce assembly time by eliminating field measuring of critical dimensions.
+            This means structurally a Heritage Building is a “do-it-yourself” bolt-together solution using easy to
+            install serrated flange bolts. No measuring. No cutting. No carpentry skills required. Each Seagrave
+            Heritage Building comes with easy to read engineer stamped drawings, assembly instructions, structural steel
+            door openings, roof and wall panels and a complete trim package.
+        </p>
+        <h1><strong>Options</strong></h1>
+        <div role="separator" class="mdc-deprecated-list-divider" style="background: var(--md-sys-color-on-background-dark)"></div>
+        <p>&nbsp;</p>
+        <p>
+            Optional items include eave overhangs, gutters and downspouts, ridge vents, roll-up doors, insulation,
+            firewalls and accent bands. Optional colours are available by special order.
+        </p>
+        <p><strong>Possible building uses include:</strong></p>
+        <ul>
+            <li>Garage</li>
+            <li>Carport</li>
+            <li>Workshop</li>
+            <li>Storage</li>
+            <li>Small Business</li>
+            <li>Small Barn</li>
+            <li>Hay Storage</li>
+        </ul>
+
+    </div>
+    <div class="images" style="display: block">
+        <img src="{% static 'pictures/Heritage1.jpg' %}" style="margin-left: 20px">
+        <img src="{% static 'pictures/panel-options.jpg' %}" style="margin-left: 20px">
+        <img src="{% static 'pictures/Heritage4.jpg' %}" style="margin-left: 20px">
+        <img src="{% static 'pictures/Heritage2.jpg' %}" style="margin-left: 20px">
+    </div>
+</div>
+
+
+
+{% endblock %}
