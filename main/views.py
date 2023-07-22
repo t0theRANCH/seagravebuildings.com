@@ -14,6 +14,8 @@ from .forms import QuoteForm, Register, Login, ForgotPassword, ChangePassword, R
 from .image_processing import TransformImage
 from .confirm_registration import email_verification_token
 
+from random import randint
+
 
 # Helper functions
 def get_user(response, uid, object_type):
@@ -46,34 +48,42 @@ def send_verification_email(response, instance, instance_type, email, subject):
 
 # Beginning of views
 class MainView(TemplateView):
+    banner_image = ''
+    banner_images = []
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.header_image = self.make_top_banner('main/static/pictures/building.jpg')
+        self.header_image = None
         self.menu_items = NavMenuItem.objects.all()
         self.user = None
 
-    @staticmethod
-    def make_top_banner(image_path):
+    def make_top_banner(self):
+        if not self.banner_images or self.banner_image:
+            self.banner_image = 'main/static/pictures/buildings/building.jpg'
+        if self.banner_images:
+            self.banner_image = self.banner_images[randint(0, len(self.banner_images) - 1)]
         target_resolution = (1366, 768)
         banner_resolution = (466, 69)
-        header_image = TransformImage(image_path=image_path)
+        header_image = TransformImage(image_path=self.banner_image)
         header_image.set_target_resolution(target_resolution)
         header_image.set_banner_resolution(banner_resolution)
         header_image.rotate()
         header_image.resize()
         header_image.make_top_bar()
-        return {'top_bar_height': f"{header_image.image_out.size[1]}px",
-                'content_margin': f"{header_image.image_out.size[1] + 20}px",
-                'top_bar': header_image.image_out_path.split('/')[-1],
-                'banner_height': header_image.logo_banner_resolution[1],
-                'banner_width': header_image.logo_banner_resolution[0]}
+        self.header_image = {'top_bar_height': f"{header_image.image_out.size[1]}px",
+                             'content_margin': f"{header_image.image_out.size[1] + 20}px",
+                             'top_bar': header_image.image_out_path.split('/')[-1],
+                             'banner_height': header_image.logo_banner_resolution[1],
+                             'banner_width': header_image.logo_banner_resolution[0]}
 
     def get_user(self, response):
         self.user = response.user if response.user.is_authenticated else None
 
     def get(self, response, *args, **kwargs):
         self.get_user(response)
-        context = {'url': self.template_name.split('/')[-1], 'menu_items': self.menu_items, 'user': self.user} | self.header_image
+        self.make_top_banner()
+        context = {'url': self.template_name.split('/')[-1], 'menu_items': self.menu_items,
+                   'user': self.user} | self.header_image
         return render(response, self.template_name, context)
 
 
@@ -99,6 +109,7 @@ class QuoteView(MainView):
 
     def get(self, response, *args, **kwargs):
         self.get_user(response)
+        self.make_top_banner()
         form = QuoteForm()
         return self.render_page(response, form)
 
@@ -128,7 +139,8 @@ class ConfirmationView(TemplateView):
         self.context = {}
 
     def get_context(self, response):
-        self.context = {key: value if key not in response.session else response.session[key] for key, value in self.info.items()}
+        self.context = {key: value if key not in response.session else response.session[key]
+                        for key, value in self.info.items()}
 
     def get(self, response, *args, **kwargs):
         self.get_context(response)
@@ -185,7 +197,8 @@ def sign_in(response):
         if user := authenticate(response, username=username, password=password):
             login(response, user)
             return redirect('home')
-        return render(response, 'registration/login.html', {'form': form, 'error_message': 'Oops, Something went wrong'})
+        return render(response, 'registration/login.html',
+                      {'form': form, 'error_message': 'Oops, Something went wrong'})
     return render(response, 'registration/login.html', {'form': form})
 
 
@@ -208,7 +221,6 @@ def password_reset(response):
 def layout_calculator(response):
     form = RectangleForm(response.POST or None)
     if form.is_valid():
-
         sides = {'side_ab': form.cleaned_data['side_ab'], 'side_ac': form.cleaned_data['side_ac'],
                  'side_bd': form.cleaned_data['side_bd'], 'side_cd': form.cleaned_data['side_cd'],
                  'diag_ad': form.cleaned_data['diag_ad'], 'diag_bc': form.cleaned_data['diag_bc']}

@@ -45,6 +45,24 @@
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body class="home">
+    <input type="checkbox" id="menu_check" class="overlay" style="opacity: 0; left: 0; width: 20vw; height: 70px; z-index: 11;"/>
+    <label for="menu_check" class="menu_btn overlay" style="left: 0; width: 20vw; height: 70px; z-index: 10;">
+        <button id="open-menu" style="overflow: visible; background: var(--md-sys-color-background-dark); left: 0; width: 70px; height: 70px;
+           transition: all .5s ease-in-out"
+           class="mdc-icon-button overlay">
+           <div class="mdc-icon-button__ripple"></div>
+           <span class="mdc-icon-button__focus-ring" style="color: var(--md-sys-color-background-dark)"></span>
+           <i class="material-icons" style="color: var(--md-sys-color-on-background-dark)">menu</i>
+        </button>
+        <button id="close-menu" style="overflow: visible; background: var(--md-sys-color-background-dark); left: 0; width: 70px; height: 70px;
+           transition: all .5s ease-in-out"
+           class="mdc-icon-button overlay">
+           <div class="mdc-icon-button__ripple"></div>
+           <span class="mdc-icon-button__focus-ring" style="color: var(--md-sys-color-background-dark)"></span>
+           <i class="material-icons" style="color: var(--md-sys-color-on-background-dark)">close</i>
+        </button>
+
+    </label>
     <aside class="mdc-drawer">
         <div class="mdc-drawer__header">
             <div class="login" style="display: block; margin: auto">
@@ -139,18 +157,19 @@
         </nav>
         </div>
     </aside>
-
+    <div class="scrim"></div>
     <div class="content-wrapper">
         <a href="/">
-            <img class="overlay" src="{% static 'resized_logo.jpg' %}" style="height: {{ banner_height }}px">
+            <img class="overlay" src="{% static 'resized_logo.jpg' %}" style="height: 70px">
         </a>
-        <div class="topbar" style="height: {{ top_bar_height }}">
-            <img src="{% static top_bar %}" style="height: {{ top_bar_height }}">
+        <div class="topbar">
+            <img src="{% static top_bar %}">
         </div>
 
-        <div class="content" style="margin-top: {{ content_margin }}; margin-bottom: 20px">
+        <div class="content">
            {% block content %}{% endblock %}
         </div>
+
 
         {% if not quote %}
         <form action="quote.html">
@@ -179,6 +198,7 @@
         </div>
 
     </div>
+
 
 
 

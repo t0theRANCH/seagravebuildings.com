@@ -28,7 +28,10 @@ def calculate_angle(side_lengths: list):
     b = side_lengths[0]
     c = side_lengths[1]
     cos_a = (a**2 - (c**2 + b**2)) / (-2 * b * c)
-    ans = math.acos(cos_a)
+    try:
+        ans = math.acos(cos_a)
+    except ValueError:
+        return "Error: Invalid input, your measurements are incorrect"
     return math.degrees(ans)
 
 
@@ -43,6 +46,11 @@ def calculate_angles(input_dict):
     # Use Law of Cosines in the 4 triangles to solve for the corner angles in the quadrilateral
     for key, value in triangles.items():
         angle = calculate_angle(value)
-        angles[key.lstrip('Triangle ')] = f"{round(angle, 3)}°"
+        if isinstance(angle, str):
+            triangle = key.lstrip("Triangle ")
+            angles['error'] = angle
+            angles[triangle] = "Error"
+            continue
+        angles[key.lstrip('Triangle ')] = f"{round(angle, 2)}°"
 
     return angles

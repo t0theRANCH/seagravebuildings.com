@@ -2,12 +2,14 @@ const appBarElement = document.getElementsByClassName('topbar')[0];
 const wrapperElement = document.getElementsByClassName('content-wrapper')[0];
 
 const appBarHeight = appBarElement.clientHeight;
-
+appBarElement.style.height = appBarHeight + 'px';
 let lastContentScrollTop = 0;
 
 function scrollListener(){
   const currentContentScrollTop = wrapperElement.scrollTop;
+
   currentAppBarHeight = parseInt(appBarElement.style.height);
+  console.log(currentAppBarHeight);
   if (currentContentScrollTop > lastContentScrollTop) {
     let newAppBarHeight;
     // user is scrolling down

@@ -1,0 +1,104 @@
+@import url(material-theme/css/theme.css);
+
+.input_dimensions {
+    width: 40vw;
+    z-index: 1;
+}
+
+#rectangle {
+    background-color: var(--md-sys-color-background-dark);
+    border: 1px solid var(--md-sys-color-outline-dark);
+    width: 85%;
+    position: relative;
+    height: 90%;
+    top: 15%;
+}
+
+.container {
+    left: 0;
+    width: 50vw;
+    height: 500px;
+    position: relative;
+}
+
+.mdc-button {
+    background: var(--md-sys-color-primary-dark) !important;
+    margin: 20px 0 0 0 !important;
+    width: 280px !important;
+}
+
+.mdc-button:hover {
+    background: var(--md-sys-color-on-primary-dark) !important;
+}
+
+.mdc-button:active {
+    box-shadow: 0 0 10px 0 var(--md-sys-color-shadow-dark) inset !important;
+}
+
+.mdc-button:hover > .mdc-button__label {
+    color: var(--md-sys-color-primary-dark) !important;
+}
+
+h1 strong.error {
+    background: transparent;
+    color: var(--md-sys-color-error-dark);
+}
+
+@media screen and (max-width: 798px) {
+    .input_dimensions {
+        width: 75vw;
+        position: relative;
+        left: -90vw;
+        transition: left ease .6s;
+    }
+
+    .container {
+        position: relative;
+        left: -75%;
+        width: 100vw;
+    }
+
+    #rectangle {
+        width: 70vw;
+
+    }
+
+}
+
+
+@media screen and (min-width: 799px) {
+#menu-check, .menu-btn, #open_menu, #close_menu {
+    z-index: 0;
+    display: none;
+}
+}
+
+#menu-check:checked ~.input_dimensions {
+    left: 0;
+}
+
+#menu-check:checked ~ label > #close_menu {
+    display: block;
+}
+#menu-check:checked ~ label > #open_menu {
+    display: none;
+}
+
+#open_menu {
+    overflow: visible;
+    background: var(--md-sys-color-background-dark);
+    left: 0;
+    width: 70px;
+    height: 70px;
+    transition: all .5s ease-in-out
+}
+
+#close_menu {
+    overflow: visible;
+    background: var(--md-sys-color-background-dark);
+    left: 0;
+    width: 70px;
+    height: 70px;
+    transition: all .5s ease-in-out;
+    display: none;
+}

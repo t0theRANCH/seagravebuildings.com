@@ -35,6 +35,7 @@ class TransformImage:
 
     def rotate(self):
         if not self.orientation or self.orientation == '1':
+            self.save_image_from_array()
             return False
         for func in self.orientation_rotation_mapping[str(self.orientation)]:
             self.image_in_array = func(self.image_in_array)
@@ -95,3 +96,4 @@ class TransformImage:
         new_image.paste(image_bottom, (0, image_top.size[1]))
         new_image.save("main/static/top_bar_image.jpg")
         self.image_out = new_image
+

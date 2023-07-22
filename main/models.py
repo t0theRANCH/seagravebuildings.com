@@ -107,7 +107,7 @@ class Site(models.Model):
     customer = models.CharField(max_length=200)
     address = models.CharField(max_length=200)
     city = models.CharField(max_length=200)
-    date = models.DateField()
+    start_date = models.DateField()
 
 
 class Equipment(models.Model):
@@ -115,7 +115,7 @@ class Equipment(models.Model):
     type = models.CharField(max_length=200)
     unit_num = models.IntegerField()
     mileage = models.IntegerField()
-    last_service = models.DateField()
+    last_service = models.IntegerField()
     last_inspection = models.DateField()
     site = models.ForeignKey(Site, on_delete=models.SET_DEFAULT, default="0")
 
@@ -199,4 +199,5 @@ class Rectangle(models.Model):
     side_cd = models.CharField(max_length=10)
     diag_ad = models.CharField(max_length=10)
     diag_bc = models.CharField(max_length=10)
+
 

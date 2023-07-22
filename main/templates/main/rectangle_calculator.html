@@ -6,7 +6,7 @@
     <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
     <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="icon" type="image/png" href="{% static 'favicon.png' %}" />
+    <link rel="icon" type="image/png" href="{% static 'favicon.png' %}"/>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="color-scheme" content="dark">
@@ -14,69 +14,64 @@
     <!-- Add Material font (Roboto) and Material icon as needed -->
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
     <link rel="preconnect" href="https://cdn.jsdelivr.net/" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;700&family=Roboto+Slab:wght@300;400;700&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;700&family=Roboto+Slab:wght@300;400;700&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+          rel="stylesheet" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Outlined" rel="stylesheet" crossorigin>
 
     <!-- Material CSS -->
     <link href="https://cdn.jsdelivr.net/gh/djibe/material@4.6.2-1.0/css/material.min.css" rel="stylesheet" crossorigin>
     <link rel="stylesheet" href="{% static 'stylesheets/base.css' %}">
     <link rel="stylesheet" href="{% static 'stylesheets/form_fields.css' %}">
+    <link rel="stylesheet" href="{% static 'stylesheets/rectangle_calculator.css' %}">
     <title>Layout Calculator</title>
 
-    <style>
-        #rectangle {
-            background-color: var(--md-sys-color-background-dark);
-            border: 1px solid var(--md-sys-color-outline-dark);
-            width: 60%;
-            position: relative;
-            height: 90%;
-            top: 15%;
-        }
-
-        .container {
-            width: 75%;
-            height: 500px;
-            position: relative;
-        }
-
-        .mdc-button {
-            background: var(--md-sys-color-primary-dark) !important;
-            margin: 20px 0 0 0 !important;
-            width: 280px !important;
-        }
-
-        .mdc-button:hover {
-            background: var(--md-sys-color-on-primary-dark) !important;
-        }
-
-        .mdc-button:active {
-            box-shadow: 0 0 10px 0 var(--md-sys-color-shadow-dark) inset !important;
-        }
-
-        .mdc-button:hover > .mdc-button__label {
-            color: var(--md-sys-color-primary-dark) !important;
-        }
-    </style>
 </head>
-<body class="home">
-    <div class="content" style="display: block">
+<body class="home" style="display:block;">
+    <div style="display: flex; height: 70px">
+
+        <a href="/">
+            <img class="overlay" src="{% static 'resized_logo.jpg' %}" style="height: 70px; left: 70px; width:100%; object-position: center;
+            display: flex; align-items: center;">
+        </a>
+    </div>
+    <div class="content" style="display: block; margin-top: 60px">
         <h1><strong>Layout Calculator</strong></h1>
         <p>
-        Enter each side length measurement and corresponding diagonal measurement (in inches) of your concrete foundation
-        and press the submit button. Each angle will be calculated based on the measurements, giving you the side
-        that is the most opportune starting point to measure the layout for your building.
+            Enter each side length measurement and corresponding diagonal measurement (in inches) of your concrete
+            foundation
+            and press the submit button. Each angle will be calculated based on the measurements, giving you the side
+            that is the most opportune starting point to measure the layout for your building.
         </p>
-            <div style="display: flex">
+        {% if 'error' in angles %}
+            <h1><strong class="error">{{ angles.error }}</strong></h1>
+        {% endif %}
+        <div style="display: flex; width: 100vw; left:0">
+            <input type="checkbox" id="menu-check" class="overlay" style="opacity: 0; left: 0; width: 70px; height: 70px; z-index: 11"/>
+            <label for="menu-check" class="menu-btn overlay" style="left: 0; width: 70px; height: 70px; z-index: 10">
+                <button id="open_menu"
+                   class="mdc-icon-button overlay">
+                   <div class="mdc-icon-button__ripple"></div>
+                   <span class="mdc-icon-button__focus-ring" style="color: var(--md-sys-color-background-dark)"></span>
+                   <i class="material-icons" style="color: var(--md-sys-color-on-background-dark)">menu</i>
+                </button>
+                <button id="close_menu"
+                   class="mdc-icon-button overlay">
+                   <div class="mdc-icon-button__ripple"></div>
+                   <span class="mdc-icon-button__focus-ring" style="color: var(--md-sys-color-background-dark)"></span>
+                   <i class="material-icons" style="color: var(--md-sys-color-on-background-dark)">close</i>
+                </button>
+            </label>
+            <aside class="input_dimensions mdc-drawer">
                 <form action="#" method="post" style="display: block; margin-right: 140px">
                     {% csrf_token %}
                     {% for side in form %}
-                    <div class="form-row">
-                    {{ side }}
-                        <label for="{{ side.id_for_label }}" class="form__label">{{ side.label }}</label>
-                        <div class="helper-text">
-                            {{ side.errors.0 }}
+                        <div class="form-row">
+                            {{ side }}
+                            <label for="{{ side.id_for_label }}" class="form__label">{{ side.label }}</label>
+                            <div class="helper-text">
+                                {{ side.errors.0 }}
+                            </div>
                         </div>
-                    </div>
                     {% endfor %}
                     <button class="mdc-button mdc-button--raised" id="submit-button">
                         <span class="mdc-button__ripple"></span>
@@ -84,21 +79,42 @@
                         <span class="mdc-button__label" style="color: var(--md-sys-color-on-primary-dark)">Calculate</span>
                     </button>
                 </form>
-                <div class="container">
-                    <div id="rectangle">
-                        <h1 style="position: absolute; top: -10%; left:0"><strong>A</strong></h1>
+            </aside>
+            <div class="container">
+                <div id="rectangle">
+                    <h1 style="position: absolute; top: -10%; left:0"><strong>A</strong></h1>
+                    {% if "Error" in angles.A %}
+                        <h1 style="position: absolute; top: 5%; left: 10%"><strong class="error">{{ angles.A }}</strong>
+                        </h1>
+                    {% else %}
                         <h1 style="position: absolute; top: 5%; left: 10%"><strong>{{ angles.A }}</strong></h1>
-                        <h1 style="position: absolute; top: -10%; left:90%"><strong>B</strong></h1>
+                    {% endif %}
+                    <h1 style="position: absolute; top: -10%; left:90%"><strong>B</strong></h1>
+                    {% if "Error" in angles.B %}
+                        <h1 style="position: absolute; top: 5%; left: 70%"><strong class="error">{{ angles.B }}</strong>
+                        </h1>
+                    {% else %}
                         <h1 style="position: absolute; top: 5%; left: 70%"><strong>{{ angles.B }}</strong></h1>
+                    {% endif %}
 
-                        <h1 style="position:absolute; top: 80%; left: 0"><strong>C</strong></h1>
+                    <h1 style="position:absolute; top: 80%; left: 0"><strong>C</strong></h1>
+                    {% if "Error" in angles.C %}
+                        <h1 style="position:absolute; top: 65%; left: 10%"><strong class="error">{{ angles.C }}</strong>
+                        </h1>
+                    {% else %}
                         <h1 style="position:absolute; top: 65%; left: 10%"><strong>{{ angles.C }}</strong></h1>
-                        <h1 style="position:absolute; top: 80%; left: 90%"><strong>D</strong></h1>
+                    {% endif %}
+                    <h1 style="position:absolute; top: 80%; left: 90%"><strong>D</strong></h1>
+                    {% if "Error" in angles.D %}
+                        <h1 style="position:absolute; top: 65%; left: 70%"><strong class="error">{{ angles.D }}</strong>
+                        </h1>
+                    {% else %}
                         <h1 style="position:absolute; top: 65%; left: 70%"><strong>{{ angles.D }}</strong></h1>
+                    {% endif %}
 
-                    </div>
                 </div>
-          </div>
-      </div>
-  </body>
+            </div>
+        </div>
+    </div>
+</body>
 </html>
