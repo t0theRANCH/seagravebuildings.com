@@ -1,0 +1,122 @@
+@import url(material-theme/css/theme.css);
+@import url(nav_drawer.css);
+
+@font-face {
+    font-family: 'BankGothicBold';
+    font-style: normal;
+    font-weight: bold;
+    src: url('BankGothicBold.ttf');
+}
+
+::selection {
+  background: var(--md-sys-color-primary-container-dark);
+}
+
+
+a {
+    color: var(--md-sys-color-primary-container-dark);
+}
+
+a:hover {
+    color: var(--md-sys-color-primary-dark);
+}
+
+h1 strong {
+    font-size: 36px;
+    color: var(--md-sys-color-primary-dark);
+    font-family: BankGothicBold;
+}
+
+h2 strong {
+    font-size: 32px;
+    color: var(--md-sys-color-primary-dark);
+    font-family: BankGothicBold;
+}
+
+h3 strong {
+    font-size: 24px;
+    color: var(--md-sys-color-secondary-dark);
+    font-family: BankGothicBold;
+}
+
+
+li {
+    color: var(--md-sys-color-on-background-dark);
+}
+
+p {
+    font-size: 14px;
+    color: var(--md-sys-color-on-background-dark);
+}
+
+li strong {
+    font-size: 18px;
+    color: var(--md-sys-color-primary-dark);
+    font-family: BankGothicBold;
+}
+
+.home {
+    background: var(--md-sys-color-background-dark);
+    display: flex;
+    align-items: stretch;
+}
+
+.mdc-fab {
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    background-color: var(--md-sys-color-primary-container-dark);
+}
+
+.mdc-fab__label {
+    color: var(--md-sys-color-on-primary-container-dark)
+}
+
+.topbar {
+    background-color: var(--md-sys-color-background-dark);
+    top: 0;
+    position: fixed;
+    overflow: hidden;
+    z-index: 0;
+    object-fit: cover;
+    width: 100vw;
+    height: 75vh;
+    display: flex;
+    align-items: center;
+}
+
+.topbar img {
+    background-color: var(--md-sys-color-background-dark);
+    top: 0;
+    overflow: hidden;
+    z-index: 1;
+    object-position: center;
+    display: flex;
+    align-items: center;
+}
+
+.overlay {
+    background-color: var(--md-sys-color-background-dark);
+    position: fixed;
+    top: 0;
+    left: 20vw;
+    width: 80vw;
+    overflow: hidden;
+    z-index: 2;
+}
+
+.content-wrapper {
+    overflow-y: auto;
+    height: 110vh;
+    z-index: 2;
+}
+
+.content {
+    padding-left: 50px;
+    padding-right: 100px;
+    margin: 75vh 50px 20px 25px;
+    overflow: hidden;
+    width: 100%;
+    z-index: 2;
+}
+

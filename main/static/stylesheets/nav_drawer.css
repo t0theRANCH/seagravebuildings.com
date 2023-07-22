@@ -1,0 +1,259 @@
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes impact {
+    10% {
+        transform: rotate(36deg);
+    }
+    15%{
+        transform: rotate(30deg);
+    }
+    20% {
+        transform: rotate(72deg);
+    }
+    25%{
+        transform: rotate(66deg);
+    }
+    30% {
+        transform: rotate(108deg);
+    }
+    35% {
+        transform: rotate(102deg);
+    }
+    40% {
+        transform: rotate(144deg);
+    }
+    45%{
+        transform: rotate(138deg);
+    }
+    50% {
+        transform: rotate(180deg);
+    }
+    55%{
+        transform: rotate(174deg);
+    }
+    60% {
+        transform: rotate(216deg);
+    }
+    65%{
+        transform: rotate(210deg);
+    }
+    70% {
+        transform: rotate(252deg);
+    }
+    75%{
+        transform: rotate(246deg);
+    }
+    80% {
+        transform: rotate(288deg);
+    }
+    85% {
+        transform: rotate(282deg);
+    }
+    90% {
+        transform: rotate(324deg);
+    }
+    95%{
+        transform: rotate(318deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+
+}
+
+.drawer-logo {
+    margin: auto;
+    animation-name: spin, impact;
+    animation-duration: 0.1s, 1s;
+    animation-delay: 1s, 2s;
+    animation-iteration-count: 10, 1;
+}
+
+.login {
+    margin-top: 40px;
+    display: flex;
+}
+
+.mdc-button {
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.mdc-deprecated-list-item__text {
+    font-family: BankGothicBold;
+    font-size: large;
+}
+
+.expansion-panel-toggler {
+    font-family: BankGothicBold;
+    font-size: large;
+}
+
+.expansion-panel-body .mdc-deprecated-list-item .mdc-deprecated-list-item__text {
+    font-size: medium;
+}
+
+.expansion-panel-body {
+    background-color: var(--md-sys-color-surface-dark);
+}
+
+.expansion-panel-body .mdc-deprecated-list-item--activated {
+    background: var(--md-sys-color-primary-dark);
+}
+
+.expansion-panel-icon {
+    color: var(--md-sys-color-on-surface-dark)
+}
+
+.mdc-drawer {
+    padding: 90px 0 200px;
+    z-index: 4;
+    width: 25vw;
+    background-color: var(--md-sys-color-surface-dark);
+}
+
+@media screen and (max-width: 600px) {
+    .mdc-drawer {
+        position: relative;
+        left: -75vw;
+        width: 75vw;
+        transition: left ease .6s;
+    }
+
+    .content-wrapper {
+        position: fixed;
+        left: 0;
+    }
+}
+
+@media screen and (min-width: 601px) {
+    #menu_check, .menu_btn, #open-menu, #close-menu {
+        z-index: 0;
+        display: none;
+    }
+}
+
+#menu_check:checked ~.mdc-drawer{
+    left: 0;
+}
+
+#menu_check:checked {
+    position: absolute;
+}
+
+#menu_check:checked ~ label {
+    position: absolute;
+}
+
+#menu_check:checked ~ label > #open-menu,
+#menu_check:checked ~ label > #close-menu {
+    position: absolute;
+}
+#menu_check:checked ~ label > #close-menu {
+    display: block;
+}
+#menu_check:checked ~ label > #open-menu {
+    display: none;
+}
+
+#menu_check:checked ~ .scrim {
+    visibility: visible;
+}
+
+#close-menu {
+    display: none;
+}
+
+.scrim {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 3;
+    background-color: rgba(0, 0, 0, 0.5);
+    visibility: hidden;
+}
+
+.mdc-deprecated-list-item__text {
+    color: var(--md-sys-color-on-surface-dark);
+}
+
+.mdc-deprecated-list-item:hover {
+    background: var(--md-sys-color-secondary-container-dark);
+}
+
+.mdc-deprecated-list-item:focus {
+    background: var(--md-sys-color-secondary-container-dark);
+}
+
+.mdc-drawer .mdc-deprecated-list-item--activated {
+    background: var(--md-sys-color-primary-container-dark);
+}
+
+.mdc-deprecated-list-item--activated .mdc-deprecated-list-item__text {
+    color: var(--md-sys-color-on-primary-container-dark);
+}
+
+.expansion-panel:hover {
+    background: var(--md-sys-color-secondary-container-dark);
+}
+
+.list-group:focus {
+    background-color: var(--md-sys-color-secondary-container-dark);
+}
+
+.expansion-panel-toggler:focus {
+    background-color: var(--md-sys-color-secondary-container-dark);
+}
+
+.expansion-panel::selection {
+    background-color: var(--md-sys-color-secondary-container-dark);
+}
+
+.expansion-panel-toggler {
+    background-color: var(--md-sys-color-surface-dark);
+}
+
+.expansion-panel-toggler::selection {
+    background-color: var(--md-sys-color-secondary-container-dark);
+}
+
+.expansion-panel.show {
+    background-color: var(--md-sys-color-secondary-container-dark);
+}
+
+.expansion-panel.show::selection {
+    background-color: var(--md-sys-color-secondary-container-dark);
+}
+
+.list-group:hover {
+    background: var(--md-sys-color-secondary-container-dark);
+}
+
+.list-group:active {
+    background-color: var(--md-sys-color-secondary-container-dark);
+}
+
+.list-group::selection {
+    background-color: var(--md-sys-color-secondary-container-dark);
+}
+
+.list-group {
+    background-color: var(--md-sys-color-on-surface-dark);
+}
+
+.collapsed-show {
+    color: var(--md-sys-color-on-surface-dark)
+}
+
+.collapsed-hide {
+    color: var(--md-sys-color-on-surface-dark)
+}

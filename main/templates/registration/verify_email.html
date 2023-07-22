@@ -1,0 +1,9 @@
+{% autoescape off %}
+Hi {{ user.username }},
+
+Thanks for your registration to seagravebuildings.com
+
+Please click on the link below to confirm your registration.
+
+http://{{ domain }}{% url 'activate' uid=uid token=token %}
+{% endautoescape %}

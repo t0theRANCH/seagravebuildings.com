@@ -1,0 +1,174 @@
+@import url(material-theme/css/theme.css);
+
+@font-face {
+    font-family: 'BankGothicBold';
+    font-style: normal;
+    font-weight: bold;
+    src: url('BankGothicBold.ttf');
+}
+
+
+.input-container {
+  position: relative;
+  overflow: visible;
+  margin-left: 10px;
+}
+
+.form-row{
+  display: block;
+  position: relative;
+  padding: 15px 0 0;
+  margin: 10px 0 20px 20px;
+}
+
+.form-row p{
+    font-size: 16px;
+    margin: 20px 0 0 10px;
+}
+
+.form__field {
+  font-family: inherit;
+  width: 280px;
+  height: 48px;
+  border: 1px solid var(--md-sys-color-on-surface-dark);
+  border-radius: 6px;
+  outline: 0;
+  font-size: 16px;
+  color: var(--md-sys-color-on-surface-dark);
+  background: transparent;
+  transition: border-color 0.2s;
+}
+
+.form__field::placeholder {
+  color: transparent;
+}
+
+.form__field:placeholder-shown ~ .form__label {
+  font-size: 16px;
+  cursor: text;
+  top: 30px;
+}
+
+.form__label,
+.form__field:focus ~ .form__label {
+  position: absolute;
+  top: 6px;
+  display: block;
+  transition: 0.2s;
+  font-size: 12px;
+  margin-left: 10px;
+  padding-left: 4px;
+  padding-right: 4px;
+  background-color: var(--md-sys-color-surface-dark);
+  color: var(--md-sys-color-on-surface-dark);
+}
+
+.form__field:focus ~ .form__label {
+  color: var(--md-sys-color-on-surface-dark);
+}
+
+.form__field:focus {
+  border: 2px solid var(--md-sys-color-on-surface-dark);
+  border-radius: 6px;
+}
+
+
+.helper-text {
+    color: var(--md-sys-color-error-dark);
+    font-size: 12px;
+}
+
+.checkbox-label {
+    color: var(--md-sys-color-on-surface-dark);
+}
+
+.mdc-checkbox__background {
+    background-color: var(--md-sys-color-on-surface-variant-dark);
+    border-color: var(--md-sys-color-primary-container-dark);
+}
+
+.mdc-checkbox__checkmark {
+    background-color: var(--md-sys-color-primary-container-dark);
+}
+
+
+
+.select {
+	position: relative;
+	width: 280px;
+    margin-left: 10px;
+}
+
+.select-text {
+	position: relative;
+	font-family: inherit;
+	background-color: var(--md-sys-color-background-dark);
+    color: var(--md-sys-color-on-background-dark);
+	width: 280px;
+    border: 1px solid var(--md-sys-color-outline-dark);
+	padding: 16px;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+
+.select-label:invalid{
+    color: var(--md-sys-color-on-background-dark);
+    font-size: 12px;
+}
+
+/* Remove focus */
+.select-text:focus {
+	outline: none;
+    border: 2px solid var(--md-sys-color-outline-dark);
+}
+
+	/* Use custom arrow */
+.select .select-text {
+	appearance: none;
+	-webkit-appearance:none
+}
+
+.select:after {
+	position: absolute;
+	top: 50%;
+	right: 10px;
+	/* Styling the down arrow */
+	width: 0;
+	height: 0;
+	padding: 0;
+	content: '';
+	border-left: 6px solid transparent;
+	border-right: 6px solid transparent;
+	border-top: 6px solid var(--md-sys-color-on-background-dark);
+	pointer-events: none;
+}
+
+
+/* LABEL ======================================= */
+.select-label {
+	background: var(--md-sys-color-background-dark);
+    color: var(--md-sys-color-on-background-dark);
+	font-weight: normal;
+	position: absolute;
+	pointer-events: none;
+	transition: 0.2s ease all;
+    top: -10px;
+    left: 16px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+}
+
+select:focus + .select-label .select-text {
+    color: var(--md-sys-color-on-background-dark);
+}
+
+
+/* active state */
+.select-text:focus ~ .select-label, .select-text:valid ~ .select-label {
+	color: var(--md-sys-color-on-background-dark);
+	transition: 0.2s ease all;
+    font-size: 12px;
+    padding-left: 4px;
+    padding-right: 4px;
+}
